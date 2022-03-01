@@ -1,3 +1,31 @@
 header{
     text-align: center;
 }
+
+.textcto{
+    text-align: justify;
+}
+
+.firmaTutor{
+    text-align: center;
+}
+
+.firmaFuncionario{
+    text-align: center;
+}
+
+.container .row .logoUML img{
+    width: 9vh;
+}
+
+#formCarnet{
+    display: flex;
+}
+
+#formCarnet #carnet{
+    /* width: 170px; */
+}
+
+.titsolida{
+    text-align: center;
+}
