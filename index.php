@@ -263,9 +263,9 @@ include('conexion.php');
                     Cédula:
                 </div><br><br><br><br>
 
-                <h5 class="titsolida">DECLARACIÓN DE RESPONSABILIDAD SOLIDARIA (PADRE, MADRE, TUTOR, PATROCINADOR U OTRO):</h5>
+                <h6 class="titsolida">DECLARACIÓN DE RESPONSABILIDAD SOLIDARIA (PADRE, MADRE, TUTOR, PATROCINADOR U OTRO):</h6>
                 <h6 class="textcto">
-                Yo__________________________________________, mayor de edad, de estado civil: ____________________de profesión u oficio:_______________________________, identificado (a) con cédula número: _____________________, del domicilio de _______________, en mi carácter de Padre __ Madre ___ Tutor____ Patrocinador ____ de ___________________________, Declaro mi total conformidad con las condiciones académicas y económicas estipuladas en el presente documento y que me han sido informadas, por tanto me constituyo en responsable solidario del cumplimiento de las mismas a favor de__________________________________________________________________.<br><br>
+                Yo <strong> <u> <?php echo $estudiante['madre']; ?></u></strong>, mayor de edad, de estado civil: ____________________de profesión u oficio: <strong> <u> <?php echo $estudiante['oficiom']; ?></u></strong>, identificado (a) con cédula número: _____________________, del domicilio de _______________, en mi carácter de Padre __ Madre ___ Tutor____ Patrocinador ____ de ___________________________, Declaro mi total conformidad con las condiciones académicas y económicas estipuladas en el presente documento y que me han sido informadas, por tanto me constituyo en responsable solidario del cumplimiento de las mismas a favor de__________________________________________________________________.<br><br>
                 </h6>
                 <h6 class="textcto">
                 Para efectos de comunicación con la UML, señalo la siguiente dirección: ________________________________________________ Teléfono: ______________.
