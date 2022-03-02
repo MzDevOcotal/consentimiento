@@ -2,9 +2,6 @@
 include('conexion.php');
 
 
-
-
-
 ?>
 
 
@@ -35,6 +32,7 @@ include('conexion.php');
 
                     <h4>SECRETARÍA GENERAL</h4>
                     <h5>Dirección de Admisión y Registro Académico</h5>
+                    <h6>Declaración de Consentimiento Informado</h6>
                 </div>
                 <div class="col-3">
                     <h6>Formato No.<br>SG001-0003</h6>
@@ -51,11 +49,11 @@ include('conexion.php');
     <div class="container">
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col-4">
                     <!-- Column -->
                 </div>
                 <div class="col">
-                    <!-- Column -->
+
                 </div>
                 <div class="col-3">
                     <form id="formCarnet" action="index.php" method="POST">
@@ -73,9 +71,10 @@ include('conexion.php');
         <div class="row">
 
             <?php
-
             $codigo = $_POST['codCarnet'];
 
+            
+            $conn->query("SET NAMES utf8");
             $lista = $conn->query("SELECT * FROM  estudian e inner JOIN carrera c on e.cod_car = c.cod_c WHERE e.cod_alu = $codigo and c.ano = '2022'");
 
             while ($estudiante = $lista->fetch(PDO::FETCH_ASSOC)) {
@@ -100,6 +99,7 @@ include('conexion.php');
 
                 $arancel = number_format($estudiante['valor_aran'], 2);
                 $cuotas = $estudiante['anocar']*12;
+ 
 
             ?>
 
@@ -128,7 +128,7 @@ include('conexion.php');
                 </h6>
 
                 <h6 class="textcto">
-                    QUINTA (CASO FORTUITO O FUERZA MAYOR): Es sabido por mí y acepto, que si ocurriera una o más causas de fuerza mayor o caso fortuito, la UML puede suspender temporal o definitivamente la ejecución de esta carrera; así mismo, podría suspenderse si ocurriera que haya deserción y no se logre el equilibrio económico para el sostenimiento del programa en la cohorte a la que pertenezco, en cuyos casos tengo derecho a las siguientes opciones: 1) solicitar cambio de carrera o de turno; 2) solicitar la entrega de los documentos que acrediten los estudios realizados hasta el momento; 3) acogerme a los convenios que tenga la UML con otras universidades del país en cuanto a transferencia estudiantil, todo lo anterior previa cancelación de los aranceles correspondientes.
+                    QUINTA (CASO FORTUITO O FUERZA MAYOR): Es sabido por mí y acepto, que si ocurriera una o más causas de fuerza mayor o caso fortuito, la UML puede suspender temporal o definitivamente la ejecución de esta carrera; así mismo, podría suspenderse si ocurriera que haya deserción y no se logre el equilibrio económico para el sostenimiento del programa en la cohorte a la que pertenezco, en cuyos casos tengo derecho a las siguientes opciones: 1 solicitar cambio de carrera o de turno; 2 solicitar la entrega de los documentos que acrediten los estudios realizados hasta el momento; 3 acogerme a los convenios que tenga la UML con otras universidades del país en cuanto a transferencia estudiantil, todo lo anterior previa cancelación de los aranceles correspondientes.
                 </h6>
 
                 <h6 class="textcto">
@@ -264,7 +264,7 @@ include('conexion.php');
                     OCTAVA (CEREMONIA DE GRADUACIÓN): En caso de que al momento de aprobar satisfactoriamente la modalidad de conclusión de estudios de mi elección, decidiera participar de la ceremonia solemne de graduación, me comprometo a cancelar la suma de: C$ 750.00, que cubre únicamente mi participación y la de dos invitados (Renta de Auditorio, Refrigerio, costos de logística, atuendo del graduando; es decir, toga, birrete y estola); entendiendo que por cada invitado adicional que me acompañe, cancelaré el monto que la universidad señale en su momento.
                 </h6>
                 <h6 class="textcto">
-                    Habiendo sido informado (a) de todas las cláusulas anteriores, declaro mi consentimiento y conformidad con las condiciones académicas y económicas estipuladas en el presente documento; asimismo, doy fe de que en este acto, se me ha hecho entrega de los siguientes documentos: 1) Reglamento de Régimen Académico Estudiantil y normativas conexas, 2) Pensum de la carrera seleccionada, 3) Plan de pagos obligatorios de mi carrera, 4) Plan de pagos de la modalidad de conclusión de estudios elegida preliminarmente, 5) Calendario Académico; los que contienen las regulaciones específicas que me son aplicables a partir de la fecha y de las que me doy por notificado, no pudiendo alegar ignorancia de las mismas en ninguna circunstancia.
+                    Habiendo sido informado (a) de todas las cláusulas anteriores, declaro mi consentimiento y conformidad con las condiciones académicas y económicas estipuladas en el presente documento; asimismo, doy fe de que en este acto, se me ha hecho entrega de los siguientes documentos: 1- Reglamento de Régimen Académico Estudiantil y normativas conexas, 2- Pensum de la carrera seleccionada, 3- Plan de pagos obligatorios de mi carrera, 4- Plan de pagos de la modalidad de conclusión de estudios elegida preliminarmente, 5- Calendario Académico; los que contienen las regulaciones específicas que me son aplicables a partir de la fecha y de las que me doy por notificado, no pudiendo alegar ignorancia de las mismas en ninguna circunstancia.
                 </h6>
                 <h6 class="textcto">
                     Para efectos de comunicación con la UML, señalo la siguiente dirección: <strong><u><?php echo $estudiante['direccion']; ?></u></strong>; E-Mail:_________________________________, Teléfono Convencional: ___________Cel. Claro: <strong><u><?php echo $estudiante['tel_alu']?$estudiante['tel_alu']:"___________" ; ?>,</u></strong> Cel. Tigo: <strong><u><?php echo $estudiante['celmov']?$estudiante['celmov']:"___________"?>,</u></strong> Código Postal: __________, Redes Sociales: _______________________________________________________.
