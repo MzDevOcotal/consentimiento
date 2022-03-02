@@ -1,11 +1,13 @@
 
 <?php
 include('conexion.php');
-$codigo = '20220036157';
-//Set connection names to database encoding
-$conn->query("SET NAMES 'utf8'");
-//Get the data from the database
-$lista = $conn->query("SELECT * FROM  estudian e inner JOIN carrera c on e.cod_car = c.cod_c WHERE e.cod_alu = $codigo LIMIT 1");
+if(isset($_POST['codCarnet'])){
+    $codigo = $_POST['codCarnet'];
+    //Set connection names to database encoding
+    $conn->query("SET NAMES 'utf8'");
+    //Get the data from the database
+    $lista = $conn->query("SELECT * FROM  estudian e inner JOIN carrera c on e.cod_car = c.cod_c WHERE e.cod_alu = $codigo LIMIT 1");    
+}
 
 ?>
 <!DOCTYPE html>
@@ -21,21 +23,25 @@ $lista = $conn->query("SELECT * FROM  estudian e inner JOIN carrera c on e.cod_c
 </head>
 
 <body>
-
-
     <header>
         <h3 class="tituloUniv">Universidad Martín Lutero</h3>
         <h5 class="lemaUniv">"Donde Todos Podemos Estudiar"</h5><br>
 
         <h3>SECRETARÍA GENERAL</h3>
-        <H4>Dirección de Admisión y Registro Académico</H4>
-
-
+        <h4>Dirección de Admisión y Registro Académico</h4>
     </header>
 
 
 
     <div class="container">
+        <?php 
+        //Show message if codCarnet is not set
+        if(!isset($_POST['codCarnet'])){
+            echo '<div class="alert alert-danger" role="alert">
+            <strong>Error!</strong> No se ha ingresado el código de carnet.
+            </div>';
+        }
+        ?>
         <form action="index.php" method="POST">
             <h3>Escriba el número de carnet</h3>
             <label for="carnet"></label>
