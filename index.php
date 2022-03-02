@@ -294,9 +294,9 @@ include('conexion.php');
     //imprimir alerta usando bootstrap de que no hay codigo
     echo '<div class="col-12"><div class="alert alert-danger" role="alert">
     <h4 class="alert-heading">Error!</h4>
-    <p>No se ha encontrado el código de matrícula.</p>
+    <p>No se ha encontrado el código de carnet.</p>
     <hr>
-    <p class="mb-0">Por favor, verifique que el código de matrícula sea el correcto.</p>
+    <p class="mb-0">Por favor, verifique que el código de carnet sea el correcto.</p>
     </div>';
 }?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
