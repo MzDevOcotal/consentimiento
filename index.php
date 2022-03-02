@@ -1,13 +1,8 @@
 <?php
 include('conexion.php');
-
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,14 +34,8 @@ include('conexion.php');
                 </div>
             </div>
         </div>
-
-
-
     </header>
-
-
-
-    <div class="container">
+   <div class="container">
         <div class="container">
             <div class="row">
                 <div class="col-4">
@@ -71,40 +60,35 @@ include('conexion.php');
         <div class="row">
 
             <?php
-            $codigo = $_POST['codCarnet'];
+            if(isset($_POST['codCarnet'])){           
+                $codigo = $_POST['codCarnet'];
 
-            
-            $conn->query("SET NAMES utf8");
-            $lista = $conn->query("SELECT * FROM  estudian e inner JOIN carrera c on e.cod_car = c.cod_c WHERE e.cod_alu = $codigo and c.ano = '2022'");
+                
+                $conn->query("SET NAMES utf8");
+                $lista = $conn->query("SELECT * FROM  estudian e inner JOIN carrera c on e.cod_car = c.cod_c WHERE e.cod_alu = $codigo and c.ano = '2022'");
 
-            while ($estudiante = $lista->fetch(PDO::FETCH_ASSOC)) {
-
-
-                //Validando Estado Civil
-                $estado = "";
-                if ($estudiante['est_civ'] == 'S') {
-                    $estado = "SOLTERO(A)";
-                } else if ($estudiante['est_civ'] == 'C') {
-                    $estado = "CASADO(A)";
-                };
-
-                //Validando Modalidad
-                if ($estudiante['modalidad'] == 2) {
-                    $modalidad = "POR ENCUENTRO";
-                } else if ($estudiante['modalidad'] == 4) {
-                    $modalidad = "SEMIPRESENCIAL";
-                };
+                while ($estudiante = $lista->fetch(PDO::FETCH_ASSOC)) {
 
 
+                    //Validando Estado Civil
+                    $estado = "";
+                    if ($estudiante['est_civ'] == 'S') {
+                        $estado = "SOLTERO(A)";
+                    } else if ($estudiante['est_civ'] == 'C') {
+                        $estado = "CASADO(A)";
+                    };
 
-                $arancel = number_format($estudiante['valor_aran'], 2);
-                $cuotas = $estudiante['anocar']*12;
- 
+                    //Validando Modalidad
+                    if ($estudiante['modalidad'] == 2) {
+                        $modalidad = "POR ENCUENTRO";
+                    } else if ($estudiante['modalidad'] == 4) {
+                        $modalidad = "SEMIPRESENCIAL";
+                    };
+                    $arancel = number_format($estudiante['valor_aran'], 2);
+                    $cuotas = $estudiante['anocar']*12;
+    
 
-            ?>
-
-
-
+                ?>
                 <h6 class="textcto">
                     Yo: <strong> <u> <?php echo $estudiante['nom_alu']; ?> <?php echo $estudiante['ape_alu']; ?> </u> </strong>, con número de carnet estudiantil: <strong> <u> <?php echo $estudiante['cod_alu']; ?></u> </strong>, de estado civil: <strong><u><?php echo $estado; ?></u></strong> de profesión u oficio: <strong><u><?php echo $estudiante['ocupacion']; ?>,</u></strong> identificado con cédula número: <strong><u><?php echo $estudiante['n_cedula']; ?>,</u></strong>,  del domicilio de: <strong><u><?php echo $estudiante['direccion']; ?>,</u></strong> a través de la presente, declaro que he sido aceptado (a) como estudiante de la carrera de: <strong><u><?php echo $estudiante['nom_car']; ?></u></strong>, en la Universidad Martín Lutero (UML), Sede <strong><u>OCOTAL,</u></strong> en la modalidad: <strong><u><?php echo $modalidad; ?>,</u></strong> con el objetivo de acceder a una formación plena e integral que me permita desplegar una conciencia cristiana, crítica, científica y humana; desarrollar mi personalidad y el sentido de la dignidad; y capacitarme para asumir las tareas de interés común que demanda el progreso de la nación, con lo cual podré optar al título de: <strong><u><?php echo $estudiante['tituloobt'] ? $estudiante['tituloobt'] : "___________________________"; ?></u></strong>, e insertarme al escenario laboral o emprender proyectos innovadores.
                 </h6>
@@ -295,8 +279,6 @@ include('conexion.php');
                     Nombres y Apellidos<br>
                     Cédula:
                 </div><br><br><br><br>
-
-
                 <h6 class="textcto">
                     La UML, se compromete a mantener los presentes términos y condiciones durante el tiempo ordinario que establece el currículum para concluir la carrera, siempre que el estudiante cumpla con las obligaciones pactadas en este instrumento; asimismo, se reserva el derecho de retirar de oficio la matrícula de conformidad con las causales establecidas en las normativas correspondientes.
                 </h6><br><br><br><br>
@@ -308,13 +290,16 @@ include('conexion.php');
         </div><!-- Cierra clase row -->
 
     </div>
-
-
-<?php } ?>
-
-
-
+<?php }
+} else{
+    //imprimir alerta usando bootstrap de que no hay codigo
+    echo '<div class="col-12"><div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Error!</h4>
+    <p>No se ha encontrado el código de matrícula.</p>
+    <hr>
+    <p class="mb-0">Por favor, verifique que el código de matrícula sea el correcto.</p>
+    </div>';
+}?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-
 </html>
