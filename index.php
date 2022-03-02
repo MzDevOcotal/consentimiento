@@ -1,18 +1,13 @@
 
 <?php
 include('conexion.php');
-
 $codigo = '20220036157';
-
-/* $codigo = $_POST['codCarnet']; */
-
+//Set connection names to database encoding
+$conn->query("SET NAMES 'utf8'");
+//Get the data from the database
 $lista = $conn->query("SELECT * FROM  estudian e inner JOIN carrera c on e.cod_car = c.cod_c WHERE e.cod_alu = $codigo LIMIT 1");
 
-
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 
