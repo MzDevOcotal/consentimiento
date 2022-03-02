@@ -282,7 +282,6 @@ include('conexion.php');
                 <h6 class="textcto">
                     La UML, se compromete a mantener los presentes términos y condiciones durante el tiempo ordinario que establece el currículum para concluir la carrera, siempre que el estudiante cumpla con las obligaciones pactadas en este instrumento; asimismo, se reserva el derecho de retirar de oficio la matrícula de conformidad con las causales establecidas en las normativas correspondientes.
                 </h6><br><br><br><br>
-
                 <div class="firmaFuncionario">
                     _________________________________________________<br>
                     Nombre, firma y sello funcionario de la sede
